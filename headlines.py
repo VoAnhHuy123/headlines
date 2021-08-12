@@ -13,10 +13,10 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
             'vnexpress': 'https://vnexpress.net/rss/tin-moi-nhat.rss'}
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 # @app.route('/<publication>')
 def get_news():
-    query = request.args.get('publication')
+    query = request.form.get('publication')
     if not query or query.lower() not in RSS_FEEDS:
         query = 'vnexpress'
 
